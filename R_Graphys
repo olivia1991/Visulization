@@ -39,31 +39,6 @@ lines(table(Dummy_first_complete,signup_channel)[2,],col='orange',lwd=2.5)
 legend(xinch(7),y=yinch(2.5),c("NS_Line","S_Line"), lty=c(2.5,1),lwd=c(2.5,2.5),col=c("green","orange"),xpd=TRUE,cex=1,border="black")
 
 
-table_make=table(Dummy_first_complete,vehicle_make)[,-1]
-table_make
-barplot(table_make,main ="Vehicle_make VS Complete",col=c("blue","red"))
-legend(xinch(7),y=yinch(4.5),c("No Start","Star"), lty=c(1,1),lwd=c(2.5,2.5),col=c("blue","red"),xpd=TRUE,cex=1)
-lines(table_make[1,],col='green',lwd=2.5,lty=2)
-lines(table_make[2,],col='orange',lwd=2.5)
-legend(xinch(7),y=yinch(2.5),c("NS_Line","S_Line"), lty=c(2.5,1),lwd=c(2.5,2.5),col=c("green","orange"),xpd=TRUE,cex=1,border="black")
-
-
-table(Dummy_first_complete,vehicle_model)
-a=table(Dummy_first_complete,vehicle_model)[,-1]
-a
-barplot(a,main ="Vehicle_model VS Complete",col=c("blue","red"),cex.names = 0.5)
-legend(xinch(7),y=yinch(4.5),c("No Start","Star"), lty=c(1,1),lwd=c(2.5,2.5),col=c("blue","red"),xpd=TRUE,cex=1)
-lines(a[1,],col='green',lwd=2.5,lty=2)
-lines(a[2,],col='orange',lwd=2.5)
-legend(xinch(7),y=yinch(2.5),c("NS_Line","S_Line"), lty=c(2.5,1),lwd=c(2.5,2.5),col=c("green","orange"),xpd=TRUE,cex=1,border="black")
-
-
-table(Dummy_first_complete,vehicle_year)
-barplot(table(Dummy_first_complete,vehicle_year),main ="vehicle_year VS Complete",col=c("blue","red"))
-legend(xinch(7),y=yinch(4.5),c("No Start","Star"), lty=c(1,1),lwd=c(2.5,2.5),col=c("blue","red"),xpd=TRUE,cex=1)
-lines(table(Dummy_first_complete,vehicle_year)[1,],col='green',lwd=2.5,lty=2)
-lines(table(Dummy_first_complete,vehicle_year)[2,],col='orange',lwd=2.5)
-legend(xinch(7),y=yinch(2.5),c("NS_Line","S_Line"), lty=c(2.5,1),lwd=c(2.5,2.5),col=c("green","orange"),xpd=TRUE,cex=1,border="black")
 
 # date transfter
 
@@ -96,20 +71,6 @@ ds_challenge_v2_1_data_1$df3=df3
 
 ##a_bgc  VS  da_sign_up
 
-table(Dummy_first_complete,df1)
-barplot(table(Dummy_first_complete,df1),main ="Backgroud Check and Sign Up",col=c("blue","red"),xlab="Days betwwem Bgc and Signup")
-legend(xinch(3.8),y=yinch(3.6),c("No Finish","Finish"), lty=c(1,1),lwd=c(2.5,2.5),col=c("blue","red"),xpd=TRUE,cex=1)
-lines(table(Dummy_first_complete,df1)[-1,],col='green',lwd=2.5,lty=2)
-lines(table(Dummy_first_complete,df1)[-2,],col='orange',lwd=2.5)
-legend(xinch(3.8),y=yinch(2.5),c("NF_Line","F_Line"), lty=c(2.5,1),lwd=c(2.5,2.5),col=c("green","orange"),xpd=TRUE,cex=1,border="black")
-
-#first_completed_date  VS  da_sign_up
-table(Dummy_first_complete,df2)
-barplot(table(Dummy_first_complete,df2),main ="Complete First Trip and Sign Up",col=c("blue","red"),xlab="Days between Complete First Trip and Sign Up")
-legend(xinch(6),y=yinch(3.6),c("No Finish","Finish"), lty=c(1,1),lwd=c(2.5,2.5),col=c("blue","red"),xpd=TRUE,cex=1)
-lines(table(Dummy_first_complete,df2)[-1,],col='green',lwd=2.5,lty=2)
-lines(table(Dummy_first_complete,df2)[-2,],col='orange',lwd=2.5)
-legend(xinch(6),y=yinch(2.5),c("NF_Line","F_Line"), lty=c(2.5,1),lwd=c(2.5,2.5),col=c("green","orange"),xpd=TRUE,cex=1,border="black")
 
 
 #a_bgc  VS  first_completed_date
@@ -120,5 +81,84 @@ legend(xinch(6),y=yinch(3.6),c("No Finish","Finish"), lty=c(1,1),lwd=c(2.5,2.5),
 lines(table(Dummy_first_complete,df3)[-1,],col='green',lwd=2.5,lty=2)
 lines(table(Dummy_first_complete,df3)[-2,],col='orange',lwd=2.5)
 legend(xinch(6),y=yinch(2.5),c("NF_Line","F_Line"), lty=c(2.5,1),lwd=c(2.5,2.5),col=c("green","orange"),xpd=TRUE,cex=1,border="black")
+
+x = pretty(c(-0.4,0.4),10)
+y = dnorm(x)
+
+"""
+#picture 1
+full_precison = plot(x,y,
+                     type ='l',
+                     main = 'Full Precison Weight',
+                     lwd = 3,
+                     col = 'blue',
+                     xlim = c(-1,1),
+                     ylab = '',
+                     xlab = '',
+                     yaxt="n", #去掉刻度
+                     xaxt = 'n',
+                     axes=FALSE
+                     )
+#axes=FALSE,禁止坐标轴生成
+#frame = FALSE 禁止框生成
+axis(1, xaxp = c(-1, 1, 2))
+
+"""
+
+#picture 1
+# set up necessary parameters
+mean=0
+sd=0.1
+lb=-0.2
+ub=0.2
+# create vector of x's: 100 observations around the given mean and sd
+x <- seq(-3,3,length=100)*sd + mean
+# find probabilities for these values given the distribution parameters
+hx <- dnorm(x,mean,sd)
+# plot
+plot(x, hx, type="n", xlab="", ylab="", main="Normalized Full Precision Weight",
+     xlim = c(-1,1),
+     yaxt="n", #去掉刻度
+     xaxt = 'n',
+     axes=FALSE)
+# add lines at the upper and lower bounds
+lines(x, hx, lwd =3, col = 'blue',
+      ylab = '',
+      xlab = '',
+      yaxt="n", #去掉刻度
+      xaxt = 'n',
+      xlim = c(-1,1))
+axis(1, xaxp = c(-1, 1, 2))
+
+
+
+#picture 2
+# set up necessary parameters
+mean=0
+sd=0.5
+lb=-0.2
+ub=0.2
+# create vector of x's: 100 observations around the given mean and sd
+x <- seq(-2,2,length=100)*sd + mean
+# find probabilities for these values given the distribution parameters
+hx <- dnorm(x,mean,sd)
+# plot
+plot(x, hx, type="n", xlab="", ylab="", main="Normalized Full Precision Weight", 
+     lwd = 3,
+     col = 'blue',
+     axes=FALSE)
+# add lines at the upper and lower bounds
+i =  x >= lb & x <= ub
+lines(x, hx, lwd =3, col = 'blue')
+# create polygon for shading area of distribution
+polygon(c(lb,x[i],ub), c(0,hx[i],0), col="lightblue",lty = 3, lwd =2) 
+#area <- pnorm(ub, mean, sd) - pnorm(lb, mean, sd)
+# add title and axis labels
+#mtext(paste("P(",lb,"< IQ <",ub,")=",signif(area, digits=3)),3)
+mtext(paste("When t <= w <=t --> 0"))
+axis(1, xaxp = c(-1, 1, 2))
+
+
+
 
 
